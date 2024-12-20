@@ -16,8 +16,6 @@ This is a simple keylogger application that records keystrokes and saves them to
 3. Press 'Esc' to stop logging.
 4. Find results in `log.txt`.
 
-## Requirements
-- Windows Operating System
 
 ## Requirements
 - Windows Operating System
