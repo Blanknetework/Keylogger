@@ -4,16 +4,16 @@ import subprocess
 
 def start_keylogger():
     process = subprocess.Popen(["python", "main.py"])
-    with open("keylogger_pid.txt", "w") as pid_file:
+    with open("log.txt", "w") as pid_file:
         pid_file.write(str(process.pid))
     print("Keylogger started with PID:", process.pid)
 
 def stop_keylogger():
     try:
-        with open("keylogger_pid.txt", "r") as pid_file:
+        with open("log.txt", "r") as pid_file:
             pid = int(pid_file.read())
         os.kill(pid, signal.SIGTERM)
-        os.remove("keylogger_pid.txt")
+        os.remove("log.txt")
         print("Keylogger stopped.")
     except FileNotFoundError:
         print("Keylogger is not running.")
